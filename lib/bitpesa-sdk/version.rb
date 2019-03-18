@@ -11,5 +11,5 @@ OpenAPI Generator version: 4.0.0-beta2
 =end
 
 module Bitpesa
-  VERSION = '0.1.0'
+  VERSION = '0.2.0'
 end
