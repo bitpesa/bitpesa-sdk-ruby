@@ -16,17 +16,21 @@ module Bitpesa
   class SenderResponse
     attr_accessor :object
 
+    attr_accessor :meta
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'object' => :'object'
+        :'object' => :'object',
+        :'meta' => :'meta'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'object' => :'Sender'
+        :'object' => :'Sender',
+        :'meta' => :'SenderResponseMeta'
       }
     end
 
@@ -40,6 +44,10 @@ module Bitpesa
 
       if attributes.has_key?(:'object')
         self.object = attributes[:'object']
+      end
+
+      if attributes.has_key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -61,7 +69,8 @@ module Bitpesa
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          object == o.object
+          object == o.object &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -73,7 +82,7 @@ module Bitpesa
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [object].hash
+      [object, meta].hash
     end
 
 require 'active_support/core_ext/hash'

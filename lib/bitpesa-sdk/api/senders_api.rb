@@ -146,6 +146,7 @@ module Bitpesa
     # @option opts [Integer] :per The number of results to load per page (defaults to 10)
     # @option opts [String] :created_at_from Start date to filter recipients by created_at range Allows filtering results by the specified &#x60;created_at&#x60; timeframe.  Example: &#x60;/v1/recipients?created_at_from&#x3D;2018-06-06&amp;created_at_to&#x3D;2018-06-08&#x60;
     # @option opts [String] :created_at_to End date to filter recipients by created_at range Allows filtering results by the specified &#x60;created_at&#x60; timeframe.  Example: &#x60;/v1/recipients?created_at_from&#x3D;2018-06-06&amp;created_at_to&#x3D;2018-06-08&#x60;
+    # @option opts [String] :external_id Allows filtering results by &#x60;external_id&#x60;.  Example: &#x60;/v1/senders?external_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [SenderListResponse]
     def get_senders(opts = {})
       data, _status_code, _headers = get_senders_with_http_info(opts)
@@ -159,6 +160,7 @@ module Bitpesa
     # @option opts [Integer] :per The number of results to load per page (defaults to 10)
     # @option opts [String] :created_at_from Start date to filter recipients by created_at range Allows filtering results by the specified &#x60;created_at&#x60; timeframe.  Example: &#x60;/v1/recipients?created_at_from&#x3D;2018-06-06&amp;created_at_to&#x3D;2018-06-08&#x60;
     # @option opts [String] :created_at_to End date to filter recipients by created_at range Allows filtering results by the specified &#x60;created_at&#x60; timeframe.  Example: &#x60;/v1/recipients?created_at_from&#x3D;2018-06-06&amp;created_at_to&#x3D;2018-06-08&#x60;
+    # @option opts [String] :external_id Allows filtering results by &#x60;external_id&#x60;.  Example: &#x60;/v1/senders?external_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [Array<(SenderListResponse, Fixnum, Hash)>] SenderListResponse data, response status code and response headers
     def get_senders_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -173,6 +175,7 @@ module Bitpesa
       query_params[:'per'] = opts[:'per'] if !opts[:'per'].nil?
       query_params[:'created_at_from'] = opts[:'created_at_from'] if !opts[:'created_at_from'].nil?
       query_params[:'created_at_to'] = opts[:'created_at_to'] if !opts[:'created_at_to'].nil?
+      query_params[:'external_id'] = opts[:'external_id'] if !opts[:'external_id'].nil?
 
       # header parameters
       header_params = {}

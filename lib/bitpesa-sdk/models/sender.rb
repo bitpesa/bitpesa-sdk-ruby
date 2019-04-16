@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta2
 require 'date'
 
 module Bitpesa
-  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": { } } ```  [Sender in the API documentation](https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#sender)
+  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#sender)
   class Sender
     # Type of sender to create - either person or business (defaults to person) 
     attr_accessor :type
@@ -85,6 +85,9 @@ module Bitpesa
 
     attr_accessor :id
 
+    # Optional ID that is supplied by partner linking it to the partner's own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
+    attr_accessor :external_id
+
     # The fields that have some problems and don't pass validation
     attr_accessor :errors
 
@@ -137,6 +140,7 @@ module Bitpesa
         :'metadata' => :'metadata',
         :'state' => :'state',
         :'id' => :'id',
+        :'external_id' => :'external_id',
         :'errors' => :'errors'
       }
     end
@@ -168,6 +172,7 @@ module Bitpesa
         :'metadata' => :'Object',
         :'state' => :'SenderState',
         :'id' => :'String',
+        :'external_id' => :'String',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
       }
     end
@@ -278,6 +283,10 @@ module Bitpesa
         self.id = attributes[:'id']
       end
 
+      if attributes.has_key?(:'external_id')
+        self.external_id = attributes[:'external_id']
+      end
+
       if attributes.has_key?(:'errors')
         if (value = attributes[:'errors']).is_a?(Hash)
           self.errors = value
@@ -379,6 +388,7 @@ module Bitpesa
           metadata == o.metadata &&
           state == o.state &&
           id == o.id &&
+          external_id == o.external_id &&
           errors == o.errors
     end
 
@@ -391,7 +401,7 @@ module Bitpesa
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, documents, metadata, state, id, errors].hash
+      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, documents, metadata, state, id, external_id, errors].hash
     end
 
 require 'active_support/core_ext/hash'

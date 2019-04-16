@@ -51,6 +51,9 @@ module Bitpesa
     # The latest time when the transaction has to be funded, otherwise it will be cancelled
     attr_accessor :expires_at
 
+    # Optional ID that is supplied by partner linking it to the partner's own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
+    attr_accessor :external_id
+
     attr_accessor :id
 
     # The fields that have some problems and don't pass validation
@@ -72,6 +75,7 @@ module Bitpesa
         :'due_amount' => :'due_amount',
         :'created_at' => :'created_at',
         :'expires_at' => :'expires_at',
+        :'external_id' => :'external_id',
         :'id' => :'id',
         :'errors' => :'errors'
       }
@@ -93,6 +97,7 @@ module Bitpesa
         :'due_amount' => :'Float',
         :'created_at' => :'DateTime',
         :'expires_at' => :'DateTime',
+        :'external_id' => :'String',
         :'id' => :'String',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
       }
@@ -162,6 +167,10 @@ module Bitpesa
         self.expires_at = attributes[:'expires_at']
       end
 
+      if attributes.has_key?(:'external_id')
+        self.external_id = attributes[:'external_id']
+      end
+
       if attributes.has_key?(:'id')
         self.id = attributes[:'id']
       end
@@ -219,6 +228,7 @@ module Bitpesa
           due_amount == o.due_amount &&
           created_at == o.created_at &&
           expires_at == o.expires_at &&
+          external_id == o.external_id &&
           id == o.id &&
           errors == o.errors
     end
@@ -232,7 +242,7 @@ module Bitpesa
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [input_currency, payin_methods, metadata, sender, recipients, traits, state, input_amount, payin_reference, paid_amount, due_amount, created_at, expires_at, id, errors].hash
+      [input_currency, payin_methods, metadata, sender, recipients, traits, state, input_amount, payin_reference, paid_amount, due_amount, created_at, expires_at, external_id, id, errors].hash
     end
 
 require 'active_support/core_ext/hash'

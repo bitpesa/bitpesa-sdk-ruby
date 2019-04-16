@@ -13,24 +13,20 @@ OpenAPI Generator version: 4.0.0-beta2
 require 'date'
 
 module Bitpesa
-  class TransactionResponse
-    attr_accessor :object
-
-    attr_accessor :meta
+  class TransactionResponseMeta
+    attr_accessor :existing
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'object' => :'object',
-        :'meta' => :'meta'
+        :'existing' => :'existing'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'object' => :'Transaction',
-        :'meta' => :'TransactionResponseMeta'
+        :'existing' => :'TransactionResponseExisting'
       }
     end
 
@@ -42,12 +38,8 @@ module Bitpesa
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'object')
-        self.object = attributes[:'object']
-      end
-
-      if attributes.has_key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.has_key?(:'existing')
+        self.existing = attributes[:'existing']
       end
     end
 
@@ -69,8 +61,7 @@ module Bitpesa
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          object == o.object &&
-          meta == o.meta
+          existing == o.existing
     end
 
     # @see the `==` method
@@ -82,7 +73,7 @@ module Bitpesa
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [object, meta].hash
+      [existing].hash
     end
 
 require 'active_support/core_ext/hash'
