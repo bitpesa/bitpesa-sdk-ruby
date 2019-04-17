@@ -125,7 +125,7 @@ class Client
 
       sender = Bitpesa::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
-      # Please see our documentation at https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#sender
+      # Please see our documentation at https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#external-id
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
       ngn_bank_details = Bitpesa::PayoutMethodDetails.new
