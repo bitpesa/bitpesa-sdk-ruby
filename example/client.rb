@@ -136,7 +136,7 @@ class Client
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
 
-      transaction.external_id = '1f834add' # Optional field for custom ID
+      transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
       transaction.recipients = [recipient]
