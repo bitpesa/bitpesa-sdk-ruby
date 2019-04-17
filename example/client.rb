@@ -72,7 +72,7 @@ class Client
       sender.postal_code = "798983"
       sender.birth_date = "1900-12-31"
       sender.ip = '127.0.0.1'
-      sender.external_id = '2b59def0' # Optional field for custom ID
+      sender.external_id = 'SENDER-2b59def0' # Optional field for customer ID
 
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
