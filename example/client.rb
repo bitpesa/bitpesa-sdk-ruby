@@ -28,7 +28,7 @@ class Client
     begin
       currency_info_api = Bitpesa::CurrencyInfoApi.new
       currencies = currency_info_api.info_currencies.object
-      currencies.map(&:code)
+      p currencies.map(&:code)
     rescue Bitpesa::ApiError => e
       puts "Exception when calling CurrencyInfoApi#info_currencies: #{e}"
     end
@@ -76,8 +76,7 @@ class Client
 
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
-      api.post_senders(sender_request)
-      # SenderRequest |
+      p api.post_senders(sender_request)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -91,7 +90,7 @@ class Client
     begin
       opts = { external_id: 'SENDER-2b59def0' }
       sender = Bitpesa::SendersApi.new
-      sender.get_senders(opts)
+      p sender.get_senders(opts)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -109,7 +108,7 @@ class Client
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
 
-      api.patch_sender('0789f89b-a2f3-4323-b8cc-c901692889d4', sender_request)
+      p api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -170,7 +169,7 @@ class Client
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
       transaction = Bitpesa::TransactionsApi.new
-      transaction.get_transactions(opts)
+      p transaction.get_transactions(opts)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("TransactionResponse").object.errors
@@ -420,9 +419,10 @@ end
 
 # client = Client.new(credentials)
 # client.list_currencies_example
+# client.account_validation_example
 # client.create_sender_example
 # client.get_sender_by_external_id_example
-# client.account_validation_example
+# client.update_sender_example
 # client.create_transaction_example
 # client.get_transaction_by_external_id_example
 # client.create_and_fund_transaction_example
