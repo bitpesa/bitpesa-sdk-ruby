@@ -4,7 +4,7 @@ require 'securerandom'
 require 'bundler/inline'
 
 gemfile do
-  gem "bitpesa-sdk", "=0.1.0"
+  gem "bitpesa-sdk", "=0.2.0"
 end
 
 require 'bitpesa-sdk'
@@ -72,6 +72,7 @@ class Client
       sender.postal_code = "798983"
       sender.birth_date = "1900-12-31"
       sender.ip = '127.0.0.1'
+      sender.external_id = '2b59def0' # Optional field for custom ID
 
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
@@ -84,6 +85,12 @@ class Client
         puts "Exception when calling SendersApi#create_sender_example: #{e}"
       end
     end
+  end
+
+  def get_sender_by_external_id_example
+    opts = { external_id: '2b59def0' }
+    sender = Bitpesa::SendersApi.new
+    sender.get_senders(opts)
   end
 
   def update_sender_example
@@ -110,6 +117,7 @@ class Client
       transaction = Bitpesa::Transaction.new
 
       sender = Bitpesa::Sender.new
+      # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
       ngn_bank_details = Bitpesa::PayoutMethodDetails.new
@@ -128,6 +136,7 @@ class Client
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
 
+      transaction.external_id = '1f834add' # Optional field for custom ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
       transaction.recipients = [recipient]
@@ -146,6 +155,12 @@ class Client
         puts e
       end
     end
+  end
+
+  def get_transaction_by_external_id_example
+    opts = { external_id: '1f834add' }
+    transaction = Bitpesa::TransactionsApi.new
+    transaction.get_transactions(opts)
   end
 
   def create_and_fund_transaction_example
@@ -388,7 +403,10 @@ end
 
 # client = Client.new(credentials)
 # client.list_currencies_example
+# client.create_sender_example
+# client.get_sender_by_external_id_example
 # client.account_validation_example
 # client.create_transaction_example
+# client.get_transaction_by_external_id_example
 # client.create_and_fund_transaction_example
 # client.webhook_parse_example
