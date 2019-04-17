@@ -88,9 +88,17 @@ class Client
   end
 
   def get_sender_by_external_id_example
-    opts = { external_id: '2b59def0' }
-    sender = Bitpesa::SendersApi.new
-    sender.get_senders(opts)
+    begin
+      opts = { external_id: 'SENDER-2b59def0' }
+      sender = Bitpesa::SendersApi.new
+      sender.get_senders(opts)
+    rescue Bitpesa::ApiError => e
+      if e.validation_error
+        puts e.response_object("SenderResponse").object.errors
+      else
+        puts "Exception when calling SendersApi#get_sender_by_external_id_example: #{e}"
+      end
+    end
   end
 
   def update_sender_example
@@ -118,6 +126,7 @@ class Client
 
       sender = Bitpesa::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
+      # Please see our documentation at https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#sender
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
       ngn_bank_details = Bitpesa::PayoutMethodDetails.new
@@ -158,9 +167,17 @@ class Client
   end
 
   def get_transaction_by_external_id_example
-    opts = { external_id: '1f834add' }
-    transaction = Bitpesa::TransactionsApi.new
-    transaction.get_transactions(opts)
+    begin
+      opts = { external_id: 'TRANSACTION-1f834add' }
+      transaction = Bitpesa::TransactionsApi.new
+      transaction.get_transactions(opts)
+    rescue Bitpesa::ApiError => e
+      if e.validation_error
+        puts e.response_object("TransactionResponse").object.errors
+      else
+        puts "Exception when calling TransactionsApi#get_transaction_by_external_id_example: #{e}"
+      end
+    end
   end
 
   def create_and_fund_transaction_example
