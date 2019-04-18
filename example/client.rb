@@ -90,7 +90,7 @@ class Client
     begin
       opts = { external_id: 'SENDER-2b59def0' }
       sender = Bitpesa::SendersApi.new
-      p sender.get_senders(opts)
+      p sender.get_senders(opts).object.first
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -169,7 +169,7 @@ class Client
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
       transaction = Bitpesa::TransactionsApi.new
-      p transaction.get_transactions(opts)
+      p transaction.get_transactions(opts).object.first
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("TransactionResponse").object.errors
