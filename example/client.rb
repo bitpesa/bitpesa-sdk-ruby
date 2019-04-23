@@ -28,7 +28,7 @@ class Client
     begin
       currency_info_api = Bitpesa::CurrencyInfoApi.new
       currencies = currency_info_api.info_currencies.object
-      p currencies.map(&:code)
+      currencies.map(&:code)
     rescue Bitpesa::ApiError => e
       puts "Exception when calling CurrencyInfoApi#info_currencies: #{e}"
     end
@@ -76,7 +76,11 @@ class Client
 
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
-      p api.post_senders(sender_request)
+      sender_response = api.post_senders(sender_request)
+      created_sender = sender_response.object
+
+      puts "Sender created! ID: #{created_sender.id}"
+      created_sender.id
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -90,7 +94,7 @@ class Client
     begin
       opts = { external_id: 'SENDER-2b59def0' }
       sender = Bitpesa::SendersApi.new
-      p sender.get_senders(opts).object.first
+      sender.get_senders(opts).object.first
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -108,7 +112,7 @@ class Client
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
 
-      p api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
+      api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -169,7 +173,7 @@ class Client
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
       transaction = Bitpesa::TransactionsApi.new
-      p transaction.get_transactions(opts).object.first
+      transaction.get_transactions(opts).object.first
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("TransactionResponse").object.errors
