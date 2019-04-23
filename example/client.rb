@@ -4,7 +4,7 @@ require 'securerandom'
 require 'bundler/inline'
 
 gemfile do
-  gem "bitpesa-sdk", "=0.1.0"
+  gem "bitpesa-sdk", "=0.2.0"
 end
 
 require 'bitpesa-sdk'
@@ -72,16 +72,34 @@ class Client
       sender.postal_code = "798983"
       sender.birth_date = "1900-12-31"
       sender.ip = '127.0.0.1'
+      sender.external_id = 'SENDER-2b59def0' # Optional field for customer ID
 
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
-      api.post_senders(sender_request)
-      # SenderRequest |
+      sender_response = api.post_senders(sender_request)
+      created_sender = sender_response.object
+
+      puts "Sender created! ID: #{created_sender.id}"
+      created_sender.id
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
       else
         puts "Exception when calling SendersApi#create_sender_example: #{e}"
+      end
+    end
+  end
+
+  def get_sender_by_external_id_example
+    begin
+      opts = { external_id: 'SENDER-2b59def0' }
+      sender = Bitpesa::SendersApi.new
+      sender.get_senders(opts).object.first
+    rescue Bitpesa::ApiError => e
+      if e.validation_error
+        puts e.response_object("SenderResponse").object.errors
+      else
+        puts "Exception when calling SendersApi#get_sender_by_external_id_example: #{e}"
       end
     end
   end
@@ -94,7 +112,7 @@ class Client
       sender_request = Bitpesa::SenderRequest.new
       sender_request.sender = sender
 
-      api.patch_sender('0789f89b-a2f3-4323-b8cc-c901692889d4', sender_request)
+      api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
     rescue Bitpesa::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -110,6 +128,8 @@ class Client
       transaction = Bitpesa::Transaction.new
 
       sender = Bitpesa::Sender.new
+      # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
+      # Please see our documentation at https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#external-id
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
       ngn_bank_details = Bitpesa::PayoutMethodDetails.new
@@ -128,6 +148,7 @@ class Client
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
 
+      transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
       transaction.recipients = [recipient]
@@ -144,6 +165,20 @@ class Client
         puts e.response_object("TransactionResponse").object.errors
       else
         puts e
+      end
+    end
+  end
+
+  def get_transaction_by_external_id_example
+    begin
+      opts = { external_id: 'TRANSACTION-1f834add' }
+      transaction = Bitpesa::TransactionsApi.new
+      transaction.get_transactions(opts).object.first
+    rescue Bitpesa::ApiError => e
+      if e.validation_error
+        puts e.response_object("TransactionResponse").object.errors
+      else
+        puts "Exception when calling TransactionsApi#get_transaction_by_external_id_example: #{e}"
       end
     end
   end
@@ -389,6 +424,10 @@ end
 # client = Client.new(credentials)
 # client.list_currencies_example
 # client.account_validation_example
+# client.create_sender_example
+# client.get_sender_by_external_id_example
+# client.update_sender_example
 # client.create_transaction_example
+# client.get_transaction_by_external_id_example
 # client.create_and_fund_transaction_example
 # client.webhook_parse_example
