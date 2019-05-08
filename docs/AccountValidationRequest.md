@@ -1,6 +1,7 @@
 # Bitpesa::AccountValidationRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bank_account** | **String** | Account Number to query | 
@@ -8,5 +9,17 @@ Name | Type | Description | Notes
 **country** | **String** | Country of account in 2-character alpha ISO 3166-2 country format (only NG is currently supported) | 
 **currency** | **String** | The currency the bank account is in | 
 **method** | **String** | The method of the payment. Currently only bank is supported | 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::AccountValidationRequest.new(bank_account: null,
+                                 bank_code: null,
+                                 country: null,
+                                 currency: null,
+                                 method: null)
+```
 
 

@@ -1,6 +1,7 @@
 # Bitpesa::PayoutMethodDetailsNGNBank
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
@@ -8,5 +9,17 @@ Name | Type | Description | Notes
 **bank_code** | **String** |  | 
 **bank_account** | **String** |  | 
 **bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::PayoutMethodDetailsNGNBank.new(first_name: null,
+                                 last_name: null,
+                                 bank_code: null,
+                                 bank_account: null,
+                                 bank_account_type: null)
+```
 
 

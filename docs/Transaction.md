@@ -1,6 +1,7 @@
 # Bitpesa::Transaction
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **input_currency** | **String** | The input currency describes what currency the transaction will be paid in (3-character alpha ISO 4217 currency format). For example if you wish to create an EUR to NGN transaction then input currency should be set to EUR. | 
@@ -19,5 +20,28 @@ Name | Type | Description | Notes
 **external_id** | **String** | Optional ID that is supplied by partner linking it to the partner&#39;s own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not. | [optional] 
 **id** | **String** |  | [optional] 
 **errors** | **Hash&lt;String, Array&lt;ValidationErrorDescription&gt;&gt;** | The fields that have some problems and don&#39;t pass validation | [optional] 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::Transaction.new(input_currency: NGN,
+                                 payin_methods: null,
+                                 metadata: {&quot;sendRef&quot;:&quot;MONEY-TRANSFER-12543&quot;},
+                                 sender: null,
+                                 recipients: null,
+                                 traits: null,
+                                 state: null,
+                                 input_amount: null,
+                                 payin_reference: null,
+                                 paid_amount: null,
+                                 due_amount: null,
+                                 created_at: null,
+                                 expires_at: null,
+                                 external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026,
+                                 id: null,
+                                 errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]})
+```
 
 

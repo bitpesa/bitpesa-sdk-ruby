@@ -1,6 +1,7 @@
 # Bitpesa::Sender
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Type of sender to create - either person or business (defaults to person)  | [optional] 
@@ -29,5 +30,38 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **external_id** | **String** | Optional ID that is supplied by partner linking it to the partner&#39;s own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not. | [optional] 
 **errors** | **Hash&lt;String, Array&lt;ValidationErrorDescription&gt;&gt;** | The fields that have some problems and don&#39;t pass validation | [optional] 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::Sender.new(type: person,
+                                 country: NG,
+                                 phone_country: NG,
+                                 phone_number: 752403639,
+                                 email: example@home.org,
+                                 first_name: Johnny,
+                                 middle_name: Johnny,
+                                 last_name: English,
+                                 occupation: Accountant,
+                                 nationality: NG,
+                                 onboarding_status: null,
+                                 address: null,
+                                 description: null,
+                                 name: null,
+                                 city: Kampala,
+                                 street: Fake Street,
+                                 address_description: null,
+                                 postal_code: 798983,
+                                 birth_date: null,
+                                 ip: 127.0.0.1,
+                                 documents: [{&quot;id&quot;:&quot;b6648ba3-1c7b-4f59-8580-684899c84a07&quot;}],
+                                 metadata: {},
+                                 state: null,
+                                 id: bf9ff782-e182-45ac-abea-5bce83ad6670,
+                                 external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026,
+                                 errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]})
+```
 
 

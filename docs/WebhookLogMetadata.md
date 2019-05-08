@@ -1,6 +1,7 @@
 # Bitpesa::WebhookLogMetadata
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **params** | [**WebhookDefinition**](WebhookDefinition.md) |  | [optional] 
@@ -13,5 +14,22 @@ Name | Type | Description | Notes
 **response** | [**WebhookLogMetadataResponse**](WebhookLogMetadataResponse.md) |  | [optional] 
 **app_id** | **String** | ID of app on which webhook event was triggered | [optional] 
 **api_key_id** | **String** | ID of API key in use at point of webhook event | [optional] 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::WebhookLogMetadata.new(params: null,
+                                 event: transaction.mispaid,
+                                 instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
+                                 instance_type: Transaction,
+                                 attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
+                                 tries: 15,
+                                 request: null,
+                                 response: null,
+                                 app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
+                                 api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0)
+```
 
 

@@ -1,10 +1,21 @@
 # Bitpesa::FieldValidation
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**presence** | **BOOLEAN** | Describes whether the field is mandatory or not | [optional] 
+**presence** | **Boolean** | Describes whether the field is mandatory or not | [optional] 
 **inclusion** | [**FieldSelectValidation**](FieldSelectValidation.md) |  | [optional] 
 **format** | [**Object**](.md) | Contains the regex to use to validate the input field | [optional] 
+
+## Code Sample
+
+```ruby
+require 'Bitpesa'
+
+instance = Bitpesa::FieldValidation.new(presence: true,
+                                 inclusion: null,
+                                 format: {&quot;with&quot;:&quot;(?-mix:\\A\\d+\\z)&quot;})
+```
 
 
