@@ -12,7 +12,7 @@ require 'bitpesa-sdk'
 credentials = {
     key: "<key>",
     secret: "<secret>",
-    host: 'https://api-sandbox.bitpesa.co/v1',
+    host: "https://api-sandbox.bitpesa.co/v1"
 }
 
 class Client
@@ -213,46 +213,52 @@ class Client
   end
 
   def webhook_parse_example
-    webhook_content = <<-JSON
-      {
-        "webhook": "85d11cf4-d4d6-46e4-ab7d-91355e80392a",
-        "event": "transaction.created",
-        "object": {
-          "input_amount": 21.59,
-          "input_currency": "GBP",
-          "id": "cd390e83-a9de-404d-a660-4da0f1342c04",
-          "metadata": {},
+    headers = {
+      "Authorization-Nonce": "<authorization-nonce>",
+      "Authorization-Key": "<authorization-key>",
+      "Authorization-Signature": "<authorization-signature>"
+    }
+
+    body = <<-JSON
+    {
+      "webhook": "85d11cf4-d4d6-46e4-ab7d-91355e80392a",
+      "event": "transaction.created",
+      "object": {
+        "input_amount": 21.59,
+        "input_currency": "GBP",
+        "id": "cd390e83-a9de-404d-a660-4da0f1342c04",
+        "metadata": {},
+        "state": "approved",
+        "payin_reference": "WIHGHZTSPOWN",
+        "sender": {
+          "id": "6f15f581-889f-4ae1-9591-cb283add661f",
+          "type": "person",
           "state": "approved",
-          "payin_reference": "WIHGHZTSPOWN",
-          "sender": {
-            "id": "6f15f581-889f-4ae1-9591-cb283add661f",
-            "type": "person",
-            "state": "approved",
-            "state_reason": null,
-            "country": "GB",
-            "street": "Brick Lane",
-            "postal_code": "E1 6QL",
-            "city": "London",
-            "phone_country": "GB",
-            "phone_number": "07123456789",
-            "email": "me@bitpesa.co",
-            "ip": "127.0.0.1",
-            "address_description": null,
-            "first_name": "Test",
-            "middle_name": null,
-            "last_name": "User",
-            "birth_date": "1990-01-01",
-            "occupation": "Tester",
-            "nationality": null,
-            "metadata": {
-              "bitpesa": {
-                "referer": {}
-              }
-            },
-            "providers": {
-              "NGN::Bank": "bitpesa_auto"
-            },
-            "onboarding_status": "completed_first_transaction"
+          "state_reason": null,
+          "country": "GB",
+          "street": "Brick Lane",
+          "postal_code": "E1 6QL",
+          "city": "London",
+          "phone_country": "GB",
+          "phone_number": "07123456789",
+          "email": "me@bitpesa.co",
+          "ip": "127.0.0.1",
+          "address_description": null,
+          "first_name": "Test",
+          "middle_name": null,
+          "last_name": "User",
+          "birth_date": "1990-01-01",
+          "occupation": "Tester",
+          "nationality": null,
+          "metadata": {
+            "bitpesa": {
+              "referer": {}
+            }
+          },
+          "providers": {
+            "NGN::Bank": "bitpesa_auto"
+          },
+          "onboarding_status": "completed_first_transaction"
           },
           "payin_methods": [
             {
@@ -398,25 +404,28 @@ class Client
     JSON
 
     webhook_api = Bitpesa::ApiClient.new
-    webhook = webhook_api.parse_response(webhook_content, "Webhook")
+    webhook_url = "<url>"
 
-    if webhook['event'].start_with?('transaction')
-      transaction_webhook = webhook_api.parse_response(webhook_content, 'TransactionWebhook')
-      puts transaction_webhook.object.to_s
-    elsif webhook['event'].start_with?('recipient')
-      recipient_webhook = webhook_api.parse_response(webhook_content, 'RecipientWebhook')
-      puts recipient_webhook.object.to_s
-    elsif webhook['event'].start_with?('payout_method')
-      payout_method_webhook = webhook_api.parse_response(webhook_content, 'PayoutMethodWebhook')
-      puts payout_method_webhook.object.to_s
-    elsif webhook['event'].start_with?('sender')
-      sender_webhook = webhook_api.parse_response(webhook_content, 'SenderWebhook')
-      puts sender_webhook.object.to_s
-    elsif webhook['event'].start_with?('document')
-      document_webhook = webhook_api.parse_response(webhook_content, 'DocumentWebhook')
-      puts document_webhook.object.to_s
-    else
-      puts webhook
+    if webhook_api.validate_webhook_request(webhook_url, body, headers)
+      webhook = webhook_api.parse_response(body, "Webhook")
+      if webhook['event'].start_with?('transaction')
+        transaction_webhook = webhook_api.parse_response(body, 'TransactionWebhook')
+        puts transaction_webhook.object.to_s
+      elsif webhook['event'].start_with?('recipient')
+        recipient_webhook = webhook_api.parse_response(body, 'RecipientWebhook')
+        puts recipient_webhook.object.to_s
+      elsif webhook['event'].start_with?('payout_method')
+        payout_method_webhook = webhook_api.parse_response(body, 'PayoutMethodWebhook')
+        puts payout_method_webhook.object.to_s
+      elsif webhook['event'].start_with?('sender')
+        sender_webhook = webhook_api.parse_response(body, 'SenderWebhook')
+        puts sender_webhook.object.to_s
+      elsif webhook['event'].start_with?('document')
+        document_webhook = webhook_api.parse_response(body, 'DocumentWebhook')
+        puts document_webhook.object.to_s
+      else
+        puts webhook
+      end
     end
   end
 end
