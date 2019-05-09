@@ -23,21 +23,19 @@ module Bitpesa
     # Defines url base path
     attr_accessor :base_path
 
-    # Defines API keys used with API Key authentications.
+    # Defines API key used with API Key authentications.
     #
-    # @return [Hash] key: parameter name, value: parameter value (API key)
+    # @return [String]
     #
-    # @example parameter name is "api_key", API key is "xxx" (e.g. "api_key=xxx" in query string)
-    #   config.api_key['api_key'] = 'xxx'
+    #   config.api_key = 'xxx'
     attr_accessor :api_key
 
-    # Defines API key prefixes used with API Key authentications.
+    # Defines API secret used with API Key authentications.
     #
-    # @return [Hash] key: parameter name, value: API key prefix
+    # @return [String]
     #
-    # @example parameter name is "Authorization", API key prefix is "Token" (e.g. "Authorization: Token xxx" in headers)
-    #   config.api_key_prefix['api_key'] = 'Token'
-    attr_accessor :api_key_prefix
+    #   config.api_secret = 'xxx'
+    attr_accessor :api_secret
 
     # Set this to enable/disable debugging. When enabled (set to true), HTTP request/response
     # details will be logged with `logger.debug` (see the `logger` attribute).
@@ -118,8 +116,8 @@ module Bitpesa
       @scheme = 'https'
       @host = 'api-sandbox.bitpesa.co'
       @base_path = '/v1'
-      @api_key = {}
-      @api_key_prefix = {}
+      @api_key = ''
+      @api_secret = ''
       @timeout = 0
       @client_side_validation = true
       @verify_ssl = true
@@ -163,58 +161,6 @@ module Bitpesa
     def base_url
       url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
       URI.encode(url)
-    end
-
-    # Gets API key (with prefix if set).
-    # @param [String] param_name the parameter name of API key auth
-    def api_key_with_prefix(param_name)
-      if @api_key_prefix[param_name]
-        "#{@api_key_prefix[param_name]} #{@api_key[param_name]}"
-      else
-        @api_key[param_name]
-      end
-    end
-
-    def api_key=(authorization_key)
-      api_key['Authorization-Key'] = authorization_key
-    end
-
-    def api_secret=(authorization_secret)
-      api_key['Authorization-Secret'] = authorization_secret
-    end
-
-    # Returns Auth Settings hash for api client.
-    def auth_settings
-      {
-        'AuthorizationKey' =>
-          {
-            type: 'api_key',
-            in: 'header',
-            key: 'Authorization-Key',
-            value: api_key_with_prefix('Authorization-Key')
-          },
-        'AuthorizationNonce' =>
-          {
-            type: 'api_key',
-            in: 'header',
-            key: 'Authorization-Nonce',
-            value: api_key_with_prefix('Authorization-Nonce')
-          },
-        'AuthorizationSecret' =>
-          {
-            type: 'api_key',
-            in: 'header',
-            key: 'Authorization-Secret',
-            value: api_key_with_prefix('Authorization-Secret')
-          },
-        'AuthorizationSignature' =>
-          {
-            type: 'api_key',
-            in: 'header',
-            key: 'Authorization-Signature',
-            value: api_key_with_prefix('Authorization-Signature')
-          },
-      }
     end
   end
 end

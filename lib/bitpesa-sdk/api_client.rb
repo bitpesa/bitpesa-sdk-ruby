@@ -106,8 +106,6 @@ module Bitpesa
       url_with_params = add_query(url, query_params)
       form_params = opts[:form_params] || {}
 
-      update_params_for_auth! header_params, query_params, opts[:auth_names]
-
       request_nonce = SecureRandom.uuid
       request_signature = sign_request([
         request_nonce,
@@ -118,6 +116,7 @@ module Bitpesa
 
       header_params['Authorization-Nonce'] = request_nonce
       header_params['Authorization-Signature'] = request_signature
+      header_params['Authorization-Key'] = @config.api_key
 
       # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
       _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
@@ -178,6 +177,34 @@ module Bitpesa
       rescue StandardError => e
         ApiError.new(e)
       end
+    end
+
+    # Use the Authorization Signature in the request headers to validate the payload
+    #
+    # @param webhook_url The full url including any query strings
+    # @param body The body from the request
+    # @param nonce The nonce from the request header
+    # @param signature The signature from the request header
+    # @param key The key from the request header
+    #
+    # @return boolean
+    #
+
+    def validate_webhook_request(url, body, headers)
+      nonce = headers[:'Authorization-Nonce'] || headers['Authorization-Nonce']
+      signature = headers[:'Authorization-Signature'] || headers['Authorization-Signature']
+      key = headers[:'Authorization-Key'] || headers['Authorization-Key']
+
+      return false if nonce.nil? || signature.nil? || (key != @config.api_key)
+
+      header_signature = sign_request([
+        nonce,
+        'POST',
+        url,
+        DIGEST.hexdigest(body.to_s.gsub(/[[:space:]]+/, ' ').strip)
+      ])
+
+      header_signature == signature
     end
 
     # Deserialize the response to the given return type.
@@ -335,25 +362,6 @@ module Bitpesa
       data
     end
 
-    # Update hearder and query params based on authentication settings.
-    #
-    # @param [Hash] header_params Header parameters
-    # @param [Hash] query_params Query parameters
-    # @param [String] auth_names Authentication scheme name
-    def update_params_for_auth!(header_params, query_params, auth_names)
-      Array(auth_names).each do |auth_name|
-        next if auth_name == 'AuthorizationSecret'
-
-        auth_setting = @config.auth_settings[auth_name]
-        next unless auth_setting
-        case auth_setting[:in]
-        when 'header' then header_params[auth_setting[:key]] = auth_setting[:value]
-        when 'query'  then query_params[auth_setting[:key]] = auth_setting[:value]
-        else fail ArgumentError, 'Authentication token must be in `query` or `header`'
-        end
-      end
-    end
-
     # Sign request using HMAC-SHA512 algorithm.
     #
     # @param [Hash] params An array with the nonce, request method, url and the hex digest of the request body
@@ -361,7 +369,7 @@ module Bitpesa
       to_sign = params.join('&')
       OpenSSL::HMAC.digest(
         DIGEST,
-        @config.auth_settings['AuthorizationSecret'][:value],
+        @config.api_secret,
         to_sign
       ).unpack('H*').first
     end
