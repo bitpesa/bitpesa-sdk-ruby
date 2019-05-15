@@ -1,4 +1,4 @@
-# Bitpesa::Webhook
+# TransferZero::Webhook
 
 ## Properties
 
@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Webhook.new(webhook: b2f574ff-7efe-4579-9f16-fcb9097e5ab6,
+instance = TransferZero::Webhook.new(webhook: b2f574ff-7efe-4579-9f16-fcb9097e5ab6,
                                  event: transaction.paid,
                                  object: null)
 ```

@@ -1,4 +1,4 @@
-# Bitpesa::CurrencyListResponse
+# TransferZero::CurrencyListResponse
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::CurrencyListResponse.new(object: null)
+instance = TransferZero::CurrencyListResponse.new(object: null)
 ```
 
 

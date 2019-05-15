@@ -1,6 +1,6 @@
-# Bitpesa::LogsApi
+# TransferZero::LogsApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,16 +18,16 @@ Returns a single webhook log based on the webhook log ID.
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::LogsApi.new
+api_instance = TransferZero::LogsApi.new
 
 
 begin
   #Fetch an individual webhook log
   result = api_instance.get_webhook_log(webhook_log_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookLogResponse")
@@ -50,14 +50,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -79,9 +79,9 @@ Returns a list of webhook logs. Response includes pagination.
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::LogsApi.new
+api_instance = TransferZero::LogsApi.new
 
 opts = { 
   page: 1 # Integer | The page number to request (defaults to 1)
@@ -94,7 +94,7 @@ begin
   #Fetch a list of webhook logs
   result = api_instance.get_webhook_logs(opts)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookLogListResponse")
@@ -120,14 +120,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

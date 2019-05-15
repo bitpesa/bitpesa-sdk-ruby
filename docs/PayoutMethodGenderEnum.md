@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodGenderEnum
+# TransferZero::PayoutMethodGenderEnum
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodGenderEnum.new()
+instance = TransferZero::PayoutMethodGenderEnum.new()
 ```
 
 

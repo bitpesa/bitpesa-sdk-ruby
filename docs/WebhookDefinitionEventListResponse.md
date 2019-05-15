@@ -1,4 +1,4 @@
-# Bitpesa::WebhookDefinitionEventListResponse
+# TransferZero::WebhookDefinitionEventListResponse
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::WebhookDefinitionEventListResponse.new(object: null)
+instance = TransferZero::WebhookDefinitionEventListResponse.new(object: null)
 ```
 
 

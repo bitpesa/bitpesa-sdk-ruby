@@ -1,4 +1,4 @@
-# Bitpesa::AccountValidationError
+# TransferZero::AccountValidationError
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::AccountValidationError.new(error: Could not find account)
+instance = TransferZero::AccountValidationError.new(error: Could not find account)
 ```
 
 

@@ -1,6 +1,6 @@
-# Bitpesa::TransactionsApi
+# TransferZero::TransactionsApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,16 +23,16 @@ Calculates the input, output and fee amounts for the recipients in a transaction
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Calculates transaction amounts for a transaction payload
   result = api_instance.calculate_transactions(transaction_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -55,14 +55,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -84,16 +84,16 @@ Finds and returns a Transaction created by the requesting API key, using the pro
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Fetch a single transaction
   result = api_instance.get_transaction(transaction_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -116,14 +116,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -145,9 +145,9 @@ Retrieves a paginated list of the Transactions created by your API key.
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 opts = { 
   page: 1 # Integer | The page number to request (defaults to 1)
@@ -159,7 +159,7 @@ begin
   #Get a list of transactions
   result = api_instance.get_transactions(opts)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionListResponse")
@@ -184,14 +184,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -213,16 +213,16 @@ This method is available only in sandbox environment and is supposed to be used 
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Creates a fake payin for transaction
   result = api_instance.payin_transaction(transaction_idpayin_method_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -246,14 +246,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -275,16 +275,16 @@ This method is available only in sandbox environment and is supposed to be used 
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Creates a fake payout for transaction
   result = api_instance.payout_transaction(transaction_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -307,14 +307,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -331,21 +331,21 @@ end
 
 Creates a new transaction
 
-Transactions are the main objects in the BitPesa API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.  The main flow of a successful transaction flow is the following - - Transaction is created linking the Sender to the Recipient(s) with the requested amounts. - Once the sender is KYC'd and approved the transaction can be funded. - Once the transaction is funded, we will initiate the payout to the recipient(s). - After the recipient (or all recipients) has received the money, the transaction is finished.
+Transactions are the main objects in the TransferZero API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.  The main flow of a successful transaction flow is the following - - Transaction is created linking the Sender to the Recipient(s) with the requested amounts. - Once the sender is KYC'd and approved the transaction can be funded. - Once the transaction is funded, we will initiate the payout to the recipient(s). - After the recipient (or all recipients) has received the money, the transaction is finished.
 
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Creates a new transaction
   result = api_instance.post_transactions(transaction_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -368,14 +368,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -397,16 +397,16 @@ Validates fields in a transaction payload and displays invalid or missing fields
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::TransactionsApi.new
+api_instance = TransferZero::TransactionsApi.new
 
 
 begin
   #Validates a transaction payload
   result = api_instance.validate_transactions(transaction_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("TransactionResponse")
@@ -429,14 +429,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

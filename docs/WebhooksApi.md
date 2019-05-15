@@ -1,6 +1,6 @@
-# Bitpesa::WebhooksApi
+# TransferZero::WebhooksApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,16 +21,16 @@ Unsubscribes from a webhook specified
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::WebhooksApi.new
+api_instance = TransferZero::WebhooksApi.new
 
 
 begin
   #Unsubscribing from a webhook
   result = api_instance.delete_webhook(webhook_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookDefinitionResponse")
@@ -53,14 +53,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -82,16 +82,16 @@ Look up a webhook's details with its ID
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::WebhooksApi.new
+api_instance = TransferZero::WebhooksApi.new
 
 
 begin
   #Find a webhook's details
   result = api_instance.get_webhook(webhook_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookDefinitionResponse")
@@ -114,14 +114,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -143,15 +143,15 @@ Fetching possible webhook events
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::WebhooksApi.new
+api_instance = TransferZero::WebhooksApi.new
 
 begin
   #Find possible webhook events
   result = api_instance.get_webhook_events
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookDefinitionEventListResponse")
@@ -171,14 +171,14 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -200,9 +200,9 @@ Get a list of created webhooks
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::WebhooksApi.new
+api_instance = TransferZero::WebhooksApi.new
 
 opts = { 
   page: 1 # Integer | The page number to request (defaults to 1)
@@ -213,7 +213,7 @@ begin
   #Listing webhooks
   result = api_instance.get_webhooks(opts)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookDefinitionListResponse")
@@ -237,14 +237,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -266,16 +266,16 @@ Creates a new webhook, subscribing the provided endpoint to the specified event(
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::WebhooksApi.new
+api_instance = TransferZero::WebhooksApi.new
 
 
 begin
   #Creating a webhook
   result = api_instance.post_webhooks(webhook_definition_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("WebhookDefinitionResponse")
@@ -298,14 +298,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

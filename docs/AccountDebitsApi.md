@@ -1,6 +1,6 @@
-# Bitpesa::AccountDebitsApi
+# TransferZero::AccountDebitsApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,16 +19,16 @@ Returns a single account debit by the account debit ID
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::AccountDebitsApi.new
+api_instance = TransferZero::AccountDebitsApi.new
 
 
 begin
   #Fetching an account debit
   result = api_instance.get_accounts_debit(account_debit_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("DebitResponse")
@@ -51,14 +51,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -80,9 +80,9 @@ Get a list of accounts debits
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::AccountDebitsApi.new
+api_instance = TransferZero::AccountDebitsApi.new
 
 opts = { 
   page: 1 # Integer | The page number to request (defaults to 1)
@@ -93,7 +93,7 @@ begin
   #Listing Accounts debits
   result = api_instance.get_accounts_debits(opts)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("DebitListResponse")
@@ -117,14 +117,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -146,16 +146,16 @@ Creates a new account debit finding transaction through the internal balance  To
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::AccountDebitsApi.new
+api_instance = TransferZero::AccountDebitsApi.new
 
 
 begin
   #Creating an account debit
   result = api_instance.post_accounts_debits(debit_request_wrapper)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("DebitListResponse")
@@ -178,14 +178,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

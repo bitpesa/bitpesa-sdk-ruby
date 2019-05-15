@@ -1,4 +1,4 @@
-# Bitpesa::TransactionState
+# TransferZero::TransactionState
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::TransactionState.new()
+instance = TransferZero::TransactionState.new()
 ```
 
 

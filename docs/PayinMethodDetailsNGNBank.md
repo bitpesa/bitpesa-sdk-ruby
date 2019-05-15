@@ -1,4 +1,4 @@
-# Bitpesa::PayinMethodDetailsNGNBank
+# TransferZero::PayinMethodDetailsNGNBank
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayinMethodDetailsNGNBank.new(redirect_url: null)
+instance = TransferZero::PayinMethodDetailsNGNBank.new(redirect_url: null)
 ```
 
 

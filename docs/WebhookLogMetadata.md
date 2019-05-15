@@ -1,4 +1,4 @@
-# Bitpesa::WebhookLogMetadata
+# TransferZero::WebhookLogMetadata
 
 ## Properties
 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::WebhookLogMetadata.new(params: null,
+instance = TransferZero::WebhookLogMetadata.new(params: null,
                                  event: transaction.mispaid,
                                  instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
                                  instance_type: Transaction,

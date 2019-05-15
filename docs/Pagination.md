@@ -1,4 +1,4 @@
-# Bitpesa::Pagination
+# TransferZero::Pagination
 
 ## Properties
 
@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Pagination.new(current_page: 2,
+instance = TransferZero::Pagination.new(current_page: 2,
                                  next_page: 3,
                                  prev_page: 1,
                                  total_pages: 5,

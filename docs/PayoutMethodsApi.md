@@ -1,6 +1,6 @@
-# Bitpesa::PayoutMethodsApi
+# TransferZero::PayoutMethodsApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,16 +21,16 @@ Deletes a single payout method by the Payout Method ID
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::PayoutMethodsApi.new
+api_instance = TransferZero::PayoutMethodsApi.new
 
 
 begin
   #Deleting a payout method
   result = api_instance.delete_payout_method(payout_method_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("PayoutMethodResponse")
@@ -53,14 +53,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -82,16 +82,16 @@ Show a payout method by id
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::PayoutMethodsApi.new
+api_instance = TransferZero::PayoutMethodsApi.new
 
 
 begin
   #Fetching a payout method
   result = api_instance.get_payout_method(payout_method_id)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("PayoutMethodResponse")
@@ -114,14 +114,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -143,9 +143,9 @@ List available payout methods
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::PayoutMethodsApi.new
+api_instance = TransferZero::PayoutMethodsApi.new
 
 opts = { 
   state: ['state_example'] # Array<String> | Allows filtering results by `state` of the payout method.  Example: `/v1/payout_methods?state[]=enabled`
@@ -161,7 +161,7 @@ begin
   #Listing payout methods
   result = api_instance.get_payout_methods(opts)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("PayoutMethodListResponse")
@@ -190,14 +190,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -219,16 +219,16 @@ Updates the payout method specified in the URL path.
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::PayoutMethodsApi.new
+api_instance = TransferZero::PayoutMethodsApi.new
 
 
 begin
   #Updating a payout method
   result = api_instance.patch_payout_method(payout_method_idpayout_method)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("PayoutMethodResponse")
@@ -252,14 +252,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -281,16 +281,16 @@ Creates a new payout method in our system.
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::PayoutMethodsApi.new
+api_instance = TransferZero::PayoutMethodsApi.new
 
 
 begin
   #Creating a payout method
   result = api_instance.post_payout_methods(payout_method_request)
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("PayoutMethodResponse")
@@ -313,14 +313,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

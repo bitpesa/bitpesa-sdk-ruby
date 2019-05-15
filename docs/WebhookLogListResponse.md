@@ -1,4 +1,4 @@
-# Bitpesa::WebhookLogListResponse
+# TransferZero::WebhookLogListResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::WebhookLogListResponse.new(object: null,
+instance = TransferZero::WebhookLogListResponse.new(object: null,
                                  meta: null)
 ```
 

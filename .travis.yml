@@ -7,5 +7,5 @@ rvm:
 script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
-  - gem build bitpesa-sdk.gemspec
-  - gem install ./bitpesa-sdk-0.3.0.gem
+  - gem build transferzero-sdk.gemspec
+  - gem install ./transferzero-sdk-1.0.0.gem

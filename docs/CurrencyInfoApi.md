@@ -1,6 +1,6 @@
-# Bitpesa::CurrencyInfoApi
+# TransferZero::CurrencyInfoApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,15 +19,15 @@ Fetches a list of currencies available to use in other API requests. Usually the
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::CurrencyInfoApi.new
+api_instance = TransferZero::CurrencyInfoApi.new
 
 begin
   #Getting a list of possible requested currencies
   result = api_instance.info_currencies
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("CurrencyListResponse")
@@ -47,14 +47,14 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -76,15 +76,15 @@ Fetches a list of currencies available to use as the input currency in other API
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::CurrencyInfoApi.new
+api_instance = TransferZero::CurrencyInfoApi.new
 
 begin
   #Getting a list of possible input currencies
   result = api_instance.info_currencies_in
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("CurrencyExchangeListResponse")
@@ -104,14 +104,14 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -133,15 +133,15 @@ Fetches a list of currencies available to use as the output currency and their e
 ### Example
 ```ruby
 # load the gem
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
-api_instance = Bitpesa::CurrencyInfoApi.new
+api_instance = TransferZero::CurrencyInfoApi.new
 
 begin
   #Getting a list of possible output currencies
   result = api_instance.info_currencies_out
   p result
-rescue Bitpesa::ApiError => e
+rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
     result = e.response_object("CurrencyExchangeListResponse")
@@ -161,14 +161,14 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-You can set the API Key and Secret on the Bitpesa object when setting it up:
+You can set the API Key and Secret on the TransferZero object when setting it up:
 
 ```ruby
 
-Bitpesa.configure do |config|
+TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```

@@ -1,4 +1,4 @@
-# Bitpesa::ValidationErrorDescription
+# TransferZero::ValidationErrorDescription
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::ValidationErrorDescription.new(error: invalid)
+instance = TransferZero::ValidationErrorDescription.new(error: invalid)
 ```
 
 

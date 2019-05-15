@@ -1,4 +1,4 @@
-# Bitpesa::PaginationMeta
+# TransferZero::PaginationMeta
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PaginationMeta.new(pagination: null)
+instance = TransferZero::PaginationMeta.new(pagination: null)
 ```
 
 

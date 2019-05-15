@@ -1,4 +1,4 @@
-# Bitpesa::WebhookDefinitionRequest
+# TransferZero::WebhookDefinitionRequest
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::WebhookDefinitionRequest.new(webhook: null)
+instance = TransferZero::WebhookDefinitionRequest.new(webhook: null)
 ```
 
 

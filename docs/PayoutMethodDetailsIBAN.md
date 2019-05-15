@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodDetailsIBAN
+# TransferZero::PayoutMethodDetailsIBAN
 
 ## Properties
 
@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodDetailsIBAN.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsIBAN.new(first_name: null,
                                  last_name: null,
                                  bank_name: null,
                                  iban: null,

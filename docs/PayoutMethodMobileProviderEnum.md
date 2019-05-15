@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodMobileProviderEnum
+# TransferZero::PayoutMethodMobileProviderEnum
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodMobileProviderEnum.new()
+instance = TransferZero::PayoutMethodMobileProviderEnum.new()
 ```
 
 

@@ -1,4 +1,4 @@
-# Bitpesa::AccountMeta
+# TransferZero::AccountMeta
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::AccountMeta.new(negative_balance: false)
+instance = TransferZero::AccountMeta.new(negative_balance: null)
 ```
 
 

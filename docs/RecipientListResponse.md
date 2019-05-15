@@ -1,4 +1,4 @@
-# Bitpesa::RecipientListResponse
+# TransferZero::RecipientListResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::RecipientListResponse.new(object: null,
+instance = TransferZero::RecipientListResponse.new(object: null,
                                  meta: null)
 ```
 

@@ -1,4 +1,4 @@
-# Bitpesa::SenderResponseExisting
+# TransferZero::SenderResponseExisting
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::SenderResponseExisting.new(sender: null)
+instance = TransferZero::SenderResponseExisting.new(sender: null)
 ```
 
 

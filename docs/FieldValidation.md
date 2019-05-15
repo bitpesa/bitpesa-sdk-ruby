@@ -1,4 +1,4 @@
-# Bitpesa::FieldValidation
+# TransferZero::FieldValidation
 
 ## Properties
 
@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::FieldValidation.new(presence: true,
+instance = TransferZero::FieldValidation.new(presence: null,
                                  inclusion: null,
                                  format: {&quot;with&quot;:&quot;(?-mix:\\A\\d+\\z)&quot;})
 ```

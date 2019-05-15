@@ -1,4 +1,4 @@
-# Bitpesa::RecipientState
+# TransferZero::RecipientState
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::RecipientState.new()
+instance = TransferZero::RecipientState.new()
 ```
 
 

@@ -1,4 +1,4 @@
-# Bitpesa::DocumentResponse
+# TransferZero::DocumentResponse
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::DocumentResponse.new(object: null)
+instance = TransferZero::DocumentResponse.new(object: null)
 ```
 
 

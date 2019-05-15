@@ -1,4 +1,4 @@
-# Bitpesa::CurrencyExchange
+# TransferZero::CurrencyExchange
 
 ## Properties
 
@@ -19,14 +19,14 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::CurrencyExchange.new(code: NGN,
+instance = TransferZero::CurrencyExchange.new(code: NGN,
                                  name: Nigerian Naira,
                                  symbol: ₦,
                                  decimals: 2,
                                  subunit_to_unit: 100,
-                                 primary: true,
+                                 primary: null,
                                  min: 100,
                                  max: 50000000,
                                  margin: null,
