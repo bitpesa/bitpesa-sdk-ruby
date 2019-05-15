@@ -12,8 +12,12 @@ require 'bitpesa-sdk'
 credentials = {
     key: "<key>",
     secret: "<secret>",
-    host: "https://api-sandbox.bitpesa.co/v1"
+    host: "https://api-sandbox.transferzero.com/v1"
 }
+
+# Please see our documentation at https://github.com/transferzero/api-documentation
+# and the API specification at http://api.transferzero.com/documentation/
+# for more information.
 
 class Client
   def initialize(credentials)
@@ -35,6 +39,8 @@ class Client
   end
 
   def account_validation_example
+    # See https://github.com/transferzero/api-documentation/blob/master/additional-features.md#bank-account-name-enquiry
+    # for more information on how this feature can be used
     begin
       request = Bitpesa::AccountValidationRequest.new
       request.bank_account = '9040009999999'
@@ -57,6 +63,7 @@ class Client
   end
 
   def create_sender_example
+    # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
     begin
       api = Bitpesa::SendersApi.new
       sender = Bitpesa::Sender.new
@@ -91,6 +98,7 @@ class Client
   end
 
   def get_sender_by_external_id_example
+    # Find more details on external IDs at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
     begin
       opts = { external_id: 'SENDER-2b59def0' }
       sender = Bitpesa::SendersApi.new
@@ -105,6 +113,7 @@ class Client
   end
 
   def update_sender_example
+    # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
     begin
       api = Bitpesa::SendersApi.new
       sender = Bitpesa::Sender.new
@@ -126,12 +135,15 @@ class Client
     begin
       api = Bitpesa::TransactionsApi.new
       transaction = Bitpesa::Transaction.new
+      # Please check our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md
+      # for details on how transactions work.
 
       sender = Bitpesa::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
-      # Please see our documentation at https://github.com/bitpesa/api-documentation/blob/master/transaction-flow.md#external-id
+      # Please see our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
+      # You can find the various payout options at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#payout-details
       ngn_bank_details = Bitpesa::PayoutMethodDetails.new
       ngn_bank_details.bank_account = '123456789'
       ngn_bank_details.bank_account_type = Bitpesa::PayoutMethodBankAccountTypeEnum::N20
@@ -143,11 +155,17 @@ class Client
       payout_method.type = 'NGN::Bank'
       payout_method.details = ngn_bank_details
 
+      # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#requested-amount-and-currency
+      # on what the request amount and currencies do
       recipient = Bitpesa::Recipient.new
       recipient.requested_amount = 10000
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
 
+      # Similarly you can check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#requested-amount-and-currency
+      # on details about the input currency parameter
+
+      # Find more details on external IDs at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
       transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
@@ -170,6 +188,8 @@ class Client
   end
 
   def get_transaction_by_external_id_example
+    # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
+    # for more details on external IDs
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
       transaction = Bitpesa::TransactionsApi.new
@@ -188,6 +208,8 @@ class Client
     if transaction_id.nil?
       puts "Transaction with ID #{transaction_id} does not exist"
     else
+      # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#funding-transactions
+      # on details about funding transactions
       debit = Bitpesa::Debit.new
       debit.currency = 'GBP'
       debit.to_id = transaction_id
@@ -213,6 +235,8 @@ class Client
   end
 
   def webhook_parse_example
+    # Please see https://github.com/transferzero/api-documentation#webhooks
+    # for more details about how webhooks / callbacks work from our system
     headers = {
       "Authorization-Nonce": "<authorization-nonce>",
       "Authorization-Key": "<authorization-key>",
@@ -405,6 +429,13 @@ class Client
 
     webhook_api = Bitpesa::ApiClient.new
     webhook_url = "<url>"
+
+    # Once you've set up an endpoint where you'll be receiving callbacks you can use the following code snippet
+    # to both verify that the webhook we sent out is legitimate, and then parse it's contents regardless of type.
+    # The details you need to provide are:
+    #   - the body of the webhook/callback you received as a string
+    #   - the url of your webhook, where you are awaiting the callbacks - this has to be the full URL
+    #   - the authentication headers you have received on your webhook endpoint - as an associative array
 
     if webhook_api.validate_webhook_request(webhook_url, body, headers)
       webhook = webhook_api.parse_response(body, "Webhook")
