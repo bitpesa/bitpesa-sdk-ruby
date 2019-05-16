@@ -1,4 +1,4 @@
-# Bitpesa::DebitListRequest
+# TransferZero::DebitListRequest
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::DebitListRequest.new(debit: null)
+instance = TransferZero::DebitListRequest.new(debit: null)
 ```
 
 

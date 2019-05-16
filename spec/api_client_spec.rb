@@ -1,7 +1,7 @@
 =begin
-#BitPesa API
+#TransferZero API
 
-#Reference documentation for the BitPesa API V1
+#Reference documentation for the TransferZero API V1
 
 OpenAPI spec version: 1.0
 
@@ -12,40 +12,40 @@ OpenAPI Generator version: 4.0.0-beta2
 
 require 'spec_helper'
 
-describe Bitpesa::ApiClient do
+describe TransferZero::ApiClient do
   context 'initialization' do
     context 'URL stuff' do
       context 'host' do
         it 'removes http from host' do
-          Bitpesa.configure { |c| c.host = 'http://example.com' }
-          expect(Bitpesa::Configuration.default.host).to eq('example.com')
+          TransferZero.configure { |c| c.host = 'http://example.com' }
+          expect(TransferZero::Configuration.default.host).to eq('example.com')
         end
 
         it 'removes https from host' do
-          Bitpesa.configure { |c| c.host = 'https://wookiee.com' }
-          expect(Bitpesa::ApiClient.default.config.host).to eq('wookiee.com')
+          TransferZero.configure { |c| c.host = 'https://wookiee.com' }
+          expect(TransferZero::ApiClient.default.config.host).to eq('wookiee.com')
         end
 
         it 'removes trailing path from host' do
-          Bitpesa.configure { |c| c.host = 'hobo.com/v4' }
-          expect(Bitpesa::Configuration.default.host).to eq('hobo.com')
+          TransferZero.configure { |c| c.host = 'hobo.com/v4' }
+          expect(TransferZero::Configuration.default.host).to eq('hobo.com')
         end
       end
 
       context 'base_path' do
         it "prepends a slash to base_path" do
-          Bitpesa.configure { |c| c.base_path = 'v4/dog' }
-          expect(Bitpesa::Configuration.default.base_path).to eq('/v4/dog')
+          TransferZero.configure { |c| c.base_path = 'v4/dog' }
+          expect(TransferZero::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "doesn't prepend a slash if one is already there" do
-          Bitpesa.configure { |c| c.base_path = '/v4/dog' }
-          expect(Bitpesa::Configuration.default.base_path).to eq('/v4/dog')
+          TransferZero.configure { |c| c.base_path = '/v4/dog' }
+          expect(TransferZero::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "ends up as a blank string if nil" do
-          Bitpesa.configure { |c| c.base_path = nil }
-          expect(Bitpesa::Configuration.default.base_path).to eq('')
+          TransferZero.configure { |c| c.base_path = nil }
+          expect(TransferZero::Configuration.default.base_path).to eq('')
         end
       end
     end
@@ -53,7 +53,7 @@ describe Bitpesa::ApiClient do
 
   describe '#deserialize' do
     it "handles Array<Integer>" do
-      api_client = Bitpesa::ApiClient.new
+      api_client = TransferZero::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[12, 34]')
       data = api_client.deserialize(response, 'Array<Integer>')
@@ -62,7 +62,7 @@ describe Bitpesa::ApiClient do
     end
 
     it 'handles Array<Array<Integer>>' do
-      api_client = Bitpesa::ApiClient.new
+      api_client = TransferZero::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[[12, 34], [56]]')
       data = api_client.deserialize(response, 'Array<Array<Integer>>')
@@ -71,7 +71,7 @@ describe Bitpesa::ApiClient do
     end
 
     it 'handles Hash<String, String>' do
-      api_client = Bitpesa::ApiClient.new
+      api_client = TransferZero::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '{"message": "Hello"}')
       data = api_client.deserialize(response, 'Hash<String, String>')
@@ -83,8 +83,8 @@ describe Bitpesa::ApiClient do
   describe "#object_to_hash" do
     it 'ignores nils and includes empty arrays' do
       # uncomment below to test object_to_hash for model
-      # api_client = Bitpesa::ApiClient.new
-      # _model = Bitpesa::ModelName.new
+      # api_client = TransferZero::ApiClient.new
+      # _model = TransferZero::ModelName.new
       # update the model attribute below
       # _model.id = 1
       # update the expected value (hash) below
@@ -95,7 +95,7 @@ describe Bitpesa::ApiClient do
 
   describe '#build_collection_param' do
     let(:param) { ['aa', 'bb', 'cc'] }
-    let(:api_client) { Bitpesa::ApiClient.new }
+    let(:api_client) { TransferZero::ApiClient.new }
 
     it 'works for csv' do
       expect(api_client.build_collection_param(param, :csv)).to eq('aa,bb,cc')
@@ -123,7 +123,7 @@ describe Bitpesa::ApiClient do
   end
 
   describe '#json_mime?' do
-    let(:api_client) { Bitpesa::ApiClient.new }
+    let(:api_client) { TransferZero::ApiClient.new }
 
     it 'works' do
       expect(api_client.json_mime?(nil)).to eq false
@@ -140,7 +140,7 @@ describe Bitpesa::ApiClient do
   end
 
   describe '#select_header_accept' do
-    let(:api_client) { Bitpesa::ApiClient.new }
+    let(:api_client) { TransferZero::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_accept(nil)).to be_nil
@@ -156,7 +156,7 @@ describe Bitpesa::ApiClient do
   end
 
   describe '#select_header_content_type' do
-    let(:api_client) { Bitpesa::ApiClient.new }
+    let(:api_client) { TransferZero::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_content_type(nil)).to eq('application/json')
@@ -171,7 +171,7 @@ describe Bitpesa::ApiClient do
   end
 
   describe '#sanitize_filename' do
-    let(:api_client) { Bitpesa::ApiClient.new }
+    let(:api_client) { TransferZero::ApiClient.new }
 
     it 'works' do
       expect(api_client.sanitize_filename('sun')).to eq('sun')
@@ -186,3 +186,4 @@ describe Bitpesa::ApiClient do
     end
   end
 end
+

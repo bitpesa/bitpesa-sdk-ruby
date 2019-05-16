@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodDetailsXOFMobile
+# TransferZero::PayoutMethodDetailsXOFMobile
 
 ## Properties
 
@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodDetailsXOFMobile.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsXOFMobile.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
                                  mobile_provider: null)

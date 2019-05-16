@@ -1,4 +1,4 @@
-# Bitpesa::WebhookLog
+# TransferZero::WebhookLog
 
 ## Properties
 
@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::WebhookLog.new(id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
+instance = TransferZero::WebhookLog.new(id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
                                  message: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!,
                                  metadata: null,
                                  created_at: 2018-12-31T23:59:50.059+0000,

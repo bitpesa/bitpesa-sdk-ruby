@@ -1,4 +1,4 @@
-# Bitpesa::AccountValidationResult
+# TransferZero::AccountValidationResult
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::AccountValidationResult.new(account_name: John Smith)
+instance = TransferZero::AccountValidationResult.new(account_name: John Smith)
 ```
 
 

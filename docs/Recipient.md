@@ -1,4 +1,4 @@
-# Bitpesa::Recipient
+# TransferZero::Recipient
 
 ## Properties
 
@@ -28,16 +28,16 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Recipient.new(requested_amount: 750.0,
+instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  requested_currency: NGN,
                                  payout_method: null,
                                  metadata: {},
                                  created_at: null,
-                                 editable: true,
+                                 editable: null,
                                  input_usd_amount: 10,
-                                 may_cancel: true,
+                                 may_cancel: null,
                                  state_reason: null,
                                  state: null,
                                  transaction_id: 97e79719-06e4-4794-aeeb-d2d9415d983a,

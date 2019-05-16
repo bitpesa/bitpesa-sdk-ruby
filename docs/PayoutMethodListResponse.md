@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodListResponse
+# TransferZero::PayoutMethodListResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodListResponse.new(object: null,
+instance = TransferZero::PayoutMethodListResponse.new(object: null,
                                  meta: null)
 ```
 

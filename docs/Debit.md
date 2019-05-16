@@ -1,4 +1,4 @@
-# Bitpesa::Debit
+# TransferZero::Debit
 
 ## Properties
 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Debit.new(amount: 10000,
+instance = TransferZero::Debit.new(amount: 10000,
                                  currency: NGN,
                                  to_type: Transaction,
                                  to_id: 5f44026b-7904-4c30-87d6-f8972d790ded,

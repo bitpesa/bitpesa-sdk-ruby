@@ -1,4 +1,4 @@
-# Bitpesa::ErrorStatus
+# TransferZero::ErrorStatus
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::ErrorStatus.new(status: null,
+instance = TransferZero::ErrorStatus.new(status: null,
                                  error: null)
 ```
 

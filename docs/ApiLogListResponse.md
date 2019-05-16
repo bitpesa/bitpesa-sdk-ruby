@@ -1,4 +1,4 @@
-# Bitpesa::ApiLogListResponse
+# TransferZero::ApiLogListResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::ApiLogListResponse.new(object: null,
+instance = TransferZero::ApiLogListResponse.new(object: null,
                                  meta: null)
 ```
 

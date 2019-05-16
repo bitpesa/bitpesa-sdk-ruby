@@ -1,4 +1,4 @@
-# Bitpesa::PaymentMethodOpposite
+# TransferZero::PaymentMethodOpposite
 
 ## Properties
 
@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PaymentMethodOpposite.new(type: NGN::Bank,
+instance = TransferZero::PaymentMethodOpposite.new(type: NGN::Bank,
                                  provider: Interswitch,
-                                 otc_permitted: false,
+                                 otc_permitted: null,
                                  details: [&quot;email&quot;,&quot;first_name&quot;,&quot;last_name&quot;,&quot;address&quot;],
-                                 default: false,
+                                 default: null,
                                  fields: {&quot;email&quot;:{&quot;type&quot;:&quot;input&quot;,&quot;validations&quot;:{&quot;inclusion&quot;:{&quot;in&quot;:{&quot;NI&quot;:&quot;National Id&quot;,&quot;PP&quot;:&quot;Passport&quot;},&quot;allow_blank&quot;:true}}}},
                                  opposites: null)
 ```

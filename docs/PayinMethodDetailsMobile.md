@@ -1,4 +1,4 @@
-# Bitpesa::PayinMethodDetailsMobile
+# TransferZero::PayinMethodDetailsMobile
 
 ## Properties
 
@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayinMethodDetailsMobile.new(phone_number: +2569999999,
-                                 send_instructions: true)
+instance = TransferZero::PayinMethodDetailsMobile.new(phone_number: +2569999999,
+                                 send_instructions: null)
 ```
 
 

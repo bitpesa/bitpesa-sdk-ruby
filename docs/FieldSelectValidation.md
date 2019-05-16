@@ -1,4 +1,4 @@
-# Bitpesa::FieldSelectValidation
+# TransferZero::FieldSelectValidation
 
 ## Properties
 
@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::FieldSelectValidation.new(_in: {&quot;20&quot;:&quot;Current&quot;,&quot;10&quot;:&quot;Savings&quot;},
-                                 allow_blank: false)
+instance = TransferZero::FieldSelectValidation.new(_in: {&quot;20&quot;:&quot;Current&quot;,&quot;10&quot;:&quot;Savings&quot;},
+                                 allow_blank: null)
 ```
 
 

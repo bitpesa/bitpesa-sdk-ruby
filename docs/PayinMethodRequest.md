@@ -1,4 +1,4 @@
-# Bitpesa::PayinMethodRequest
+# TransferZero::PayinMethodRequest
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayinMethodRequest.new(payin_method: null)
+instance = TransferZero::PayinMethodRequest.new(payin_method: null)
 ```
 
 

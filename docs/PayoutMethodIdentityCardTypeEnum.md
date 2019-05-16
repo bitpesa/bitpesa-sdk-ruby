@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodIdentityCardTypeEnum
+# TransferZero::PayoutMethodIdentityCardTypeEnum
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodIdentityCardTypeEnum.new()
+instance = TransferZero::PayoutMethodIdentityCardTypeEnum.new()
 ```
 
 

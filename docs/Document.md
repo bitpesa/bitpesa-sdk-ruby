@@ -1,4 +1,4 @@
-# Bitpesa::Document
+# TransferZero::Document
 
 ## Properties
 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Document.new(upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC,
+instance = TransferZero::Document.new(upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC,
                                  upload_file_name: example.png,
                                  metadata: {},
                                  upload_content_type: image/png,

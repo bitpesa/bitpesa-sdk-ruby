@@ -1,4 +1,4 @@
-# Bitpesa::FieldDescription
+# TransferZero::FieldDescription
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::FieldDescription.new(type: input,
+instance = TransferZero::FieldDescription.new(type: input,
                                  validations: null)
 ```
 

@@ -1,4 +1,4 @@
-# Bitpesa::Sender
+# TransferZero::Sender
 
 ## Properties
 
@@ -34,9 +34,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Sender.new(type: person,
+instance = TransferZero::Sender.new(type: person,
                                  country: NG,
                                  phone_country: NG,
                                  phone_number: 752403639,

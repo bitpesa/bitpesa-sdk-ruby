@@ -1,4 +1,4 @@
-# Bitpesa::TransactionResponse
+# TransferZero::TransactionResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::TransactionResponse.new(object: null,
+instance = TransferZero::TransactionResponse.new(object: null,
                                  meta: null)
 ```
 

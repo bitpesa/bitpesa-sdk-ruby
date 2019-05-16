@@ -4,10 +4,10 @@ require 'securerandom'
 require 'bundler/inline'
 
 gemfile do
-  gem "bitpesa-sdk", "=0.2.0"
+  gem "transferzero-sdk", "=1.0.0"
 end
 
-require 'bitpesa-sdk'
+require 'transferzero-sdk'
 
 credentials = {
     key: "<key>",
@@ -21,7 +21,7 @@ credentials = {
 
 class Client
   def initialize(credentials)
-    Bitpesa.configure do |config|
+    TransferZero.configure do |config|
       config.api_key = credentials[:key]
       config.api_secret = credentials[:secret]
       config.host = credentials[:host]
@@ -30,10 +30,10 @@ class Client
 
   def list_currencies_example
     begin
-      currency_info_api = Bitpesa::CurrencyInfoApi.new
+      currency_info_api = TransferZero::CurrencyInfoApi.new
       currencies = currency_info_api.info_currencies.object
       currencies.map(&:code)
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       puts "Exception when calling CurrencyInfoApi#info_currencies: #{e}"
     end
   end
@@ -42,18 +42,18 @@ class Client
     # See https://github.com/transferzero/api-documentation/blob/master/additional-features.md#bank-account-name-enquiry
     # for more information on how this feature can be used
     begin
-      request = Bitpesa::AccountValidationRequest.new
+      request = TransferZero::AccountValidationRequest.new
       request.bank_account = '9040009999999'
       request.bank_code = '120100'
       request.country = 'GH'
       request.currency = 'GHS'
       request.method = 'bank'
 
-      account_validation_api = Bitpesa::AccountValidationApi.new
+      account_validation_api = TransferZero::AccountValidationApi.new
       account_validation = account_validation_api.post_account_validations(request)
       account_name = account_validation.object.account_name
       puts "Account Name: #{account_name}"
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("AccountValidationResponse").meta.error
       else
@@ -65,8 +65,8 @@ class Client
   def create_sender_example
     # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
     begin
-      api = Bitpesa::SendersApi.new
-      sender = Bitpesa::Sender.new
+      api = TransferZero::SendersApi.new
+      sender = TransferZero::Sender.new
       sender.country = 'UG'
       sender.phone_country = 'UG'
       sender.phone_number = '752403639'
@@ -81,14 +81,14 @@ class Client
       sender.ip = '127.0.0.1'
       sender.external_id = 'SENDER-2b59def0' # Optional field for customer ID
 
-      sender_request = Bitpesa::SenderRequest.new
+      sender_request = TransferZero::SenderRequest.new
       sender_request.sender = sender
       sender_response = api.post_senders(sender_request)
       created_sender = sender_response.object
 
       puts "Sender created! ID: #{created_sender.id}"
       created_sender.id
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
       else
@@ -101,9 +101,9 @@ class Client
     # Find more details on external IDs at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
     begin
       opts = { external_id: 'SENDER-2b59def0' }
-      sender = Bitpesa::SendersApi.new
+      sender = TransferZero::SendersApi.new
       sender.get_senders(opts).object.first
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
       else
@@ -115,14 +115,14 @@ class Client
   def update_sender_example
     # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
     begin
-      api = Bitpesa::SendersApi.new
-      sender = Bitpesa::Sender.new
+      api = TransferZero::SendersApi.new
+      sender = TransferZero::Sender.new
       sender.city = 'London'
-      sender_request = Bitpesa::SenderRequest.new
+      sender_request = TransferZero::SenderRequest.new
       sender_request.sender = sender
 
       api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
       else
@@ -133,31 +133,31 @@ class Client
 
   def create_transaction_example
     begin
-      api = Bitpesa::TransactionsApi.new
-      transaction = Bitpesa::Transaction.new
+      api = TransferZero::TransactionsApi.new
+      transaction = TransferZero::Transaction.new
       # Please check our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md
       # for details on how transactions work.
 
-      sender = Bitpesa::Sender.new
+      sender = TransferZero::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
       # Please see our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
       # You can find the various payout options at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#payout-details
-      ngn_bank_details = Bitpesa::PayoutMethodDetails.new
+      ngn_bank_details = TransferZero::PayoutMethodDetails.new
       ngn_bank_details.bank_account = '123456789'
-      ngn_bank_details.bank_account_type = Bitpesa::PayoutMethodBankAccountTypeEnum::N20
+      ngn_bank_details.bank_account_type = TransferZero::PayoutMethodBankAccountTypeEnum::N20
       ngn_bank_details.bank_code = '082'
       ngn_bank_details.first_name = 'first'
       ngn_bank_details.last_name = 'last'
 
-      payout_method = Bitpesa::PayoutMethod.new
+      payout_method = TransferZero::PayoutMethod.new
       payout_method.type = 'NGN::Bank'
       payout_method.details = ngn_bank_details
 
       # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#requested-amount-and-currency
       # on what the request amount and currencies do
-      recipient = Bitpesa::Recipient.new
+      recipient = TransferZero::Recipient.new
       recipient.requested_amount = 10000
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
@@ -171,14 +171,14 @@ class Client
       transaction.sender = sender
       transaction.recipients = [recipient]
 
-      transaction_request = Bitpesa::TransactionRequest.new
+      transaction_request = TransferZero::TransactionRequest.new
       transaction_request.transaction = transaction
       transaction_response = api.post_transactions(transaction_request)
       created_transaction = transaction_response.object
 
       puts "Transaction created! ID: #{created_transaction.id}"
       created_transaction.id
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("TransactionResponse").object.errors
       else
@@ -192,9 +192,9 @@ class Client
     # for more details on external IDs
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
-      transaction = Bitpesa::TransactionsApi.new
+      transaction = TransferZero::TransactionsApi.new
       transaction.get_transactions(opts).object.first
-    rescue Bitpesa::ApiError => e
+    rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("TransactionResponse").object.errors
       else
@@ -210,21 +210,21 @@ class Client
     else
       # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#funding-transactions
       # on details about funding transactions
-      debit = Bitpesa::Debit.new
+      debit = TransferZero::Debit.new
       debit.currency = 'GBP'
       debit.to_id = transaction_id
       debit.to_type = "Transaction"
 
-      debit_request = Bitpesa::DebitRequestWrapper.new
+      debit_request = TransferZero::DebitRequestWrapper.new
       debit_request.debit = debit
 
-      debit_api = Bitpesa::AccountDebitsApi.new
+      debit_api = TransferZero::AccountDebitsApi.new
 
       begin
         debit_response = debit_api.post_accounts_debits(debit_request)
         puts "Transaction Funded Successfully"
         debit_response.object
-      rescue Bitpesa::ApiError => e
+      rescue TransferZero::ApiError => e
         if e.validation_error
           puts e.response_object("DebitResponse").object.errors
         else
@@ -265,7 +265,7 @@ class Client
           "city": "London",
           "phone_country": "GB",
           "phone_number": "07123456789",
-          "email": "me@bitpesa.co",
+          "email": "me@transferzero.com",
           "ip": "127.0.0.1",
           "address_description": null,
           "first_name": "Test",
@@ -275,12 +275,12 @@ class Client
           "occupation": "Tester",
           "nationality": null,
           "metadata": {
-            "bitpesa": {
+            "transferzero": {
               "referer": {}
             }
           },
           "providers": {
-            "NGN::Bank": "bitpesa_auto"
+            "NGN::Bank": "transferzero_auto"
           },
           "onboarding_status": "completed_first_transaction"
           },
@@ -326,7 +326,7 @@ class Client
                   "bank_account_type": "20"
                 },
                 "metadata": {},
-                "provider": "bitpesa_auto",
+                "provider": "transferzero_auto",
                 "fields": {
                   "email": {
                     "type": "input",
@@ -427,7 +427,7 @@ class Client
       }
     JSON
 
-    webhook_api = Bitpesa::ApiClient.new
+    webhook_api = TransferZero::ApiClient.new
     webhook_url = "<url>"
 
     # Once you've set up an endpoint where you'll be receiving callbacks you can use the following code snippet

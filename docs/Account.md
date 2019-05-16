@@ -1,4 +1,4 @@
-# Bitpesa::Account
+# TransferZero::Account
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::Account.new(amount: 1000.0,
+instance = TransferZero::Account.new(amount: 1000.0,
                                  currency: USD)
 ```
 

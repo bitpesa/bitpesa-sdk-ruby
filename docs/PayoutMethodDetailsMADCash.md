@@ -1,4 +1,4 @@
-# Bitpesa::PayoutMethodDetailsMADCash
+# TransferZero::PayoutMethodDetailsMADCash
 
 ## Properties
 
@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::PayoutMethodDetailsMADCash.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsMADCash.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
                                  sender_identity_card_type: null,

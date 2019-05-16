@@ -1,4 +1,4 @@
-# Bitpesa::TransactionResponseExisting
+# TransferZero::TransactionResponseExisting
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::TransactionResponseExisting.new(sender: null,
+instance = TransferZero::TransactionResponseExisting.new(sender: null,
                                  transaction: null)
 ```
 

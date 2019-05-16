@@ -1,4 +1,4 @@
-# Bitpesa::DebitRequestWrapper
+# TransferZero::DebitRequestWrapper
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'Bitpesa'
+require 'TransferZero'
 
-instance = Bitpesa::DebitRequestWrapper.new(debit: null)
+instance = TransferZero::DebitRequestWrapper.new(debit: null)
 ```
 
 
