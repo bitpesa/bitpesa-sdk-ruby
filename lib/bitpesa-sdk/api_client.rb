@@ -179,13 +179,11 @@ module Bitpesa
       end
     end
 
-    # Use the Authorization Signature in the request headers to validate the payload
+    # Uses the Authorization Signature in the request headers to validate the payload
     #
-    # @param webhook_url The full url including any query strings
+    # @param url The full url including any query strings
     # @param body The body from the request
-    # @param nonce The nonce from the request header
-    # @param signature The signature from the request header
-    # @param key The key from the request header
+    # @param headers The request header
     #
     # @return boolean
     #
